@@ -1,0 +1,63 @@
+﻿:root {
+    --dark-blue: #003366;
+    --light-blue: #4da6ff;
+    --white: #ffffff;
+}
+
+ContentPage {
+    background-color: var(--dark-blue);
+    color: var(--white);
+}
+
+#MainPage {
+    font-family: Arial, sans-serif;
+}
+
+.MainLayout {
+    background-color: var(--dark-blue);
+    color: var(--white);
+}
+
+.TopGrid, .MainGrid {
+    border-bottom: 2px solid var(--light-blue);
+}
+
+[class^="Label"] {
+    color: var(--white);
+    font-size: 14px;
+}
+
+[class^="Button"], [class^="Picker"], [class^="Switch"] {
+    background-color: var(--light-blue);
+    color: var(--dark-blue);
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+VerticalStackLayout > Label {
+    font-weight: bold;
+}
+
+VerticalStackLayout > Button {
+    font-weight: bold;
+}
+
+.GridDrawnStudent, .GridStudent {
+    padding: 15px;
+    background-color: var(--dark-blue);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#ClassPicker, #DrawModeSwitch, #DrawButton, #NewLuckyNumberButton {
+    background-color: var(--light-blue);
+    color: var(--white);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+#DrawnStudentsCollectionView, #StudentsCollectionView {
+    border-top: 2px solid var(--light-blue);
+}

@@ -1,0 +1,12 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Wyrocznia.Views.AddStudentPage"
+             Title="Dodaj Ucznia">
+    <VerticalStackLayout Spacing="25" Padding="30">
+        <Entry x:Name="JournalNumberEntry" Placeholder="Numer w dzienniku"/>
+        <Entry x:Name="NameEntry" Placeholder="Imię ucznia"/>
+        <Entry x:Name="LastNameEntry" Placeholder="Nazwisko ucznia"/>
+        <Entry x:Name="ClassEntry" Placeholder="Klasa ucznia"/>
+        <Button Text="Dodaj" Clicked="OnAddClicked"/>
+    </VerticalStackLayout>
+</ContentPage>

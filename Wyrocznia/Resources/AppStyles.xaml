@@ -1,0 +1,39 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    x:Class="Wyrocznia.Resources.AppStyles">
+    <StyleSheet>
+        /* Zmiana stylu paska tytułowego */
+        Shell {
+            background-color: #4CAF50;
+            color: #FFFFFF;
+        }
+
+        /* Styl dla przycisków */
+        Button {
+            border-radius: 5;
+            background-color: #2196F3;
+            color: white;
+        }
+
+        /* Styl dla etykiet */
+        Label {
+            color: #757575;
+        }
+
+        /* Styl dla elementów, które mają określone ID */
+        #DrawButton {
+            background-color: #F44336;
+        }
+
+        /* Wykorzystanie selektora '^' dla CheckBox, aby zmienić styl tylko tych, które są w CollectionView */
+        CollectionView CheckBox {
+            margin: 10;
+        }
+
+        /* Styl bezpośrednich elementów podrzędnych Grid w DataTemplate CollectionView */
+        CollectionView > Grid > Label {
+            font-size: 20;
+            font-attributes: bold;
+        }
+    </StyleSheet>
+</ResourceDictionary>

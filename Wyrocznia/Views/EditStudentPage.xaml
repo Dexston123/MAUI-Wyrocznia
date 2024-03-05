@@ -1,0 +1,40 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Wyrocznia.Views.EditStudentPage"
+             Title="Edycja Ucznia">
+    <ScrollView>
+        <VerticalStackLayout Spacing="25" Padding="30">
+            <Picker x:Name="ClassPicker" Title="Wybierz klasę" SelectedIndexChanged="ClassPicker_SelectedIndexChanged"/>
+            <Grid Padding="10" ColumnSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Nr" Grid.Column="0" FontAttributes="Bold"/>
+                <Label Text="Imię" Grid.Column="1" FontAttributes="Bold"/>
+                <Label Text="Nazwisko" Grid.Column="2" FontAttributes="Bold"/>
+                <Label Text="Obecność" Grid.Column="3" FontAttributes="Bold"/>
+            </Grid>
+            <CollectionView x:Name="StudentsCollectionView" SelectionMode="Single" SelectionChanged="StudentsCollectionView_SelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10" ColumnSpacing="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding JournalNumber}" Grid.Column="0" VerticalOptions="Center"/>
+                            <Label Text="{Binding Name}" Grid.Column="1" VerticalOptions="Center" />
+                            <Label Text="{Binding LastName}" Grid.Column="2" VerticalOptions="Center" />
+                            <CheckBox IsChecked="{Binding IsPresent}" IsEnabled="False" Grid.Column="3" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

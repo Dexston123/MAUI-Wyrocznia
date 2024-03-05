@@ -1,0 +1,13 @@
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:Wyrocznia.Views"
+       x:Class="Wyrocznia.AppShell"
+       Title="Wyrocznia">
+    <TabBar>
+        <ShellContent Title="Dodaj Ucznia" ContentTemplate="{DataTemplate views:AddStudentPage}" Route="addstudentpage" />
+        <ShellContent Title="Edytuj Ucznia" ContentTemplate="{DataTemplate views:EditStudentPage}" Route="editstudents" />
+        <ShellContent Title="Lista Uczniów" ContentTemplate="{DataTemplate views:StudentsListPage}" Route="studentslistpage" />
+        <ShellContent Title="Losowanie" ContentTemplate="{DataTemplate views:DrawPage}" Route="drawpage" />
+    </TabBar>
+    <ShellContent Route="studentdetails" ContentTemplate="{DataTemplate views:StudentDetailsPage}" />
+</Shell>

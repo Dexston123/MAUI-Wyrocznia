@@ -1,0 +1,18 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Wyrocznia.Views.StudentDetailsPage"
+             Title="Szczegóły ucznia">
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20">
+            <Entry x:Name="NameEntry" Placeholder="Imię" />
+            <Entry x:Name="LastNameEntry" Placeholder="Nazwisko" />
+            <Entry x:Name="JournalNumberEntry" Placeholder="Numer w dzienniku" Keyboard="Numeric" />
+            <Entry x:Name="ClassEntry" Placeholder="Klasa" />
+            <Switch x:Name="IsPresentSwitch" />
+            <Label Text="Obecność" />
+            <Button Text="Zapisz zmiany" Clicked="OnSaveClicked" />
+            <Button Text="Usuń ucznia" Clicked="OnDeleteClicked" />
+            <Button Text="Powrót do listy" Clicked="OnBackClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

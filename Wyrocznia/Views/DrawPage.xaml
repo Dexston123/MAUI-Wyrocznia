@@ -1,0 +1,87 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:Wyrocznia.Converters"
+             x:Class="Wyrocznia.Views.DrawPage"
+             Title="Losowanie"
+             ClassId="MainPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ColorStateToColorConverter x:Key="ColorStateConverter"/>
+            <StyleSheet Source="/Resources/CSS/DrawPageStyles.css"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <ScrollView x:Name="MainScrollView">
+        <VerticalStackLayout Spacing="25" Padding="30" x:Name="MainLayout">
+            <Grid HorizontalOptions="Center" ColumnSpacing="10" x:Name="TopGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Picker x:Name="ClassPicker" Title="Wybierz klasę" SelectedIndexChanged="OnClassPickerSelectedIndexChanged" Grid.Column="0" ClassId="PickerClass"/>
+                <Label Text="Tylko obecni" Grid.Column="1" VerticalOptions="Center" x:Name="LabelPresentOnly" ClassId="LabelPresentOnly"/>
+                <Switch x:Name="DrawModeSwitch" Grid.Column="2" Toggled="DrawModeSwitch_Toggled" ClassId="SwitchDrawMode"/>
+            </Grid>
+            <Grid x:Name="MainGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <VerticalStackLayout Grid.Column="0" x:Name="LeftColumnLayout">
+                    <Label x:Name="DrawnStudentLabel" Text="Wylosowany uczeń pojawi się tutaj" HorizontalOptions="Center" ClassId="LabelDrawnStudent"/>
+                    <Button x:Name="DrawButton" Text="Losuj" Clicked="OnDrawClicked" ClassId="ButtonDraw"/>
+                    <Label Text="Wylosowani uczniowie:" FontAttributes="Bold" HorizontalOptions="Center" ClassId="LabelDrawnStudentsList"/>
+                    <Label Text="Nr       |       Imię       |       Nazwisko       |       Liczba losowań" HorizontalOptions="Center" ClassId="LabelStudentsHeader"/>
+                    <CollectionView x:Name="DrawnStudentsCollectionView" SelectionMode="None" ClassId="CollectionViewDrawnStudents">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="10" ColumnSpacing="10" x:Name="GridDrawnStudent">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding JournalNumber}" Grid.Column="0" VerticalOptions="Center" ClassId="LabelJournalNumber"/>
+                                    <Label Text="{Binding Name}" Grid.Column="1" VerticalOptions="Center" ClassId="LabelStudentName"/>
+                                    <Label Text="{Binding LastName}" Grid.Column="2" VerticalOptions="Center" ClassId="LabelStudentLastName"/>
+                                    <Label Text="{Binding DrawnCount}" Grid.Column="3" VerticalOptions="Center" ClassId="LabelDrawnCount"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Column="1" x:Name="RightColumnLayout">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" x:Name="LuckyNumberLayout">
+                        <Label Text="Szczęśliwy numer:" HorizontalOptions="StartAndExpand" ClassId="LabelLuckyNumberPrompt"/>
+                        <Label x:Name="LuckyNumberLabel" HorizontalOptions="End" ClassId="LabelLuckyNumber"/>
+                    </StackLayout>
+                    <Button x:Name="NewLuckyNumberButton" Text="Nowy szczęśliwy numer" Clicked="OnNewLuckyNumberClicked" ClassId="ButtonNewLuckyNumber"/>
+                    <Label Text="Lista uczniów:" FontAttributes="Bold" HorizontalOptions="Center" ClassId="LabelStudentsList"/>
+                    <Label Text="Nr       |       Imię       |       Nazwisko       |       Obecność" HorizontalOptions="Center" ClassId="LabelStudentsPresenceHeader"/>
+                    <CollectionView x:Name="StudentsCollectionView" SelectionMode="None" ClassId="CollectionViewStudents">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="10" ColumnSpacing="10" x:Name="GridStudent">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding JournalNumber}" Grid.Column="0" VerticalOptions="Center" TextColor="{Binding ColorState, Converter={StaticResource ColorStateConverter}}" ClassId="LabelStudentJournalNumber"/>
+                                    <Label Text="{Binding Name}" Grid.Column="1" VerticalOptions="Center" TextColor="{Binding ColorState, Converter={StaticResource ColorStateConverter}}" ClassId="LabelStudentFirstName"/>
+                                    <Label Text="{Binding LastName}" Grid.Column="2" VerticalOptions="Center" TextColor="{Binding ColorState, Converter={StaticResource ColorStateConverter}}" ClassId="LabelStudentLastNamePresence"/>
+                                    <CheckBox IsChecked="{Binding IsPresent}" Grid.Column="3" IsEnabled="False" ClassId="CheckboxStudentPresence"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
